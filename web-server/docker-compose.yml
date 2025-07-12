@@ -20,7 +20,7 @@ services:
       - app-data:/var/app/logs
     restart: unless-stopped
     networks:
-      - log-monitor-network
+      - log-string-network
 
   web-server-db:
     image: postgres:17
@@ -37,7 +37,7 @@ services:
       - "5432:5432"
     restart: unless-stopped
     networks:
-      - log-monitor-network
+      - log-string-network
 
   fluentbit:
     image: fluent/fluent-bit:2.1
@@ -54,13 +54,13 @@ services:
     depends_on:
       - web-server-app
     networks:
-      - log-monitor-network
+      - log-string-network
 
 volumes:
   app-data: {}
   pgdata:
 
 networks:
-  log-monitor-network:
-    name: log-monitor-network
+  log-string-network:
+    name: log-string-network
     driver: bridge

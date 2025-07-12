@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/spf13/cobra"
-	"github.com/ta-anomaly-detection/web-server/internal/config"
+	"github.com/ta-anomaly-detection/dashboard-monitoring-revision/web-server/internal/config"
 	"go.uber.org/zap"
 )
 

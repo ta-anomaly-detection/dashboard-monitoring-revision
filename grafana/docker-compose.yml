@@ -7,7 +7,7 @@ services:
     ports:
       - "3001:3000"
     networks:
-      - log-monitor-network
+      - log-string-network
     volumes:
       - ./dashboards:/var/lib/grafana/dashboards
       - ./provisioning:/etc/grafana/provisioning
@@ -22,5 +22,5 @@ volumes:
   grafana_data:
   
 networks:
-  log-monitor-network:
+  log-string-network:
     external: true

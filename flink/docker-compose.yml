@@ -4,7 +4,7 @@ services:
   jobmanager:
     image: flink:1.18
     networks:
-      - log-monitor-network
+      - log-string-network
     build:
       context: .
       dockerfile: Dockerfile.flinkmanager
@@ -44,7 +44,7 @@ services:
       context: .
       dockerfile: Dockerfile.flinkmanager
     networks:
-      - log-monitor-network
+      - log-string-network
     ports:
       - 9250:9249
     # volumes:
@@ -94,8 +94,8 @@ services:
       - -f
       - /dev/null
     networks:
-      - log-monitor-network
+      - log-string-network
 
 networks:
-  log-monitor-network:
+  log-string-network:
     external: true

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/ta-anomaly-detection/web-server/cmd/server"
+	cmd "github.com/ta-anomaly-detection/dashboard-monitoring-revision/web-server/cmd/server"
 )
 
 func main() {

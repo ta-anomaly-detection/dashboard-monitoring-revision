@@ -1,4 +1,4 @@
-module github.com/ta-anomaly-detection/web-server
+module github.com/ta-anomaly-detection/dashboard-monitoring-revision/web-server
 
 go 1.23.0
 

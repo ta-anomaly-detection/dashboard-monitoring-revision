@@ -2,7 +2,7 @@ package route
 
 import (
 	"github.com/labstack/echo/v4"
-	"github.com/ta-anomaly-detection/web-server/internal/delivery/http"
+	"github.com/ta-anomaly-detection/dashboard-monitoring-revision/web-server/internal/delivery/http"
 )
 
 type RouteConfig struct {

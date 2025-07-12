@@ -6,9 +6,9 @@ import (
 	"strconv"
 
 	"github.com/labstack/echo/v4"
-	"github.com/ta-anomaly-detection/web-server/internal/delivery/http/middleware"
-	"github.com/ta-anomaly-detection/web-server/internal/domain/dto"
-	"github.com/ta-anomaly-detection/web-server/internal/usecase"
+	"github.com/ta-anomaly-detection/dashboard-monitoring-revision/web-server/internal/delivery/http/middleware"
+	"github.com/ta-anomaly-detection/dashboard-monitoring-revision/web-server/internal/domain/dto"
+	"github.com/ta-anomaly-detection/dashboard-monitoring-revision/web-server/internal/usecase"
 	"go.uber.org/zap"
 )
 

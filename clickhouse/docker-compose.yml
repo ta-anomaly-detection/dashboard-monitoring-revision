@@ -9,7 +9,7 @@ services:
       - "9000:9000"
       - "9363:9363"
     networks: 
-      - log-monitor-network
+      - log-string-network
     volumes:
       - clickhouse_data:/var/lib/clickhouse
       - ./config/clickhouse-keeper:/etc/clickhouse-keeper
@@ -22,5 +22,5 @@ volumes:
   clickhouse_data:
 
 networks:
-  log-monitor-network:
+  log-string-network:
     external: true

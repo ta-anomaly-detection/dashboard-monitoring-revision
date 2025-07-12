@@ -1,8 +1,8 @@
 package converter
 
 import (
-	"github.com/ta-anomaly-detection/web-server/internal/domain/dto"
-	"github.com/ta-anomaly-detection/web-server/internal/domain/entity"
+	"github.com/ta-anomaly-detection/dashboard-monitoring-revision/web-server/internal/domain/dto"
+	"github.com/ta-anomaly-detection/dashboard-monitoring-revision/web-server/internal/domain/entity"
 )
 
 func ContactToResponse(contact *entity.Contact) *dto.ContactResponse {

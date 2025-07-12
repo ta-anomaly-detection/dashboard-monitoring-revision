@@ -6,7 +6,7 @@ import (
 	"os/exec"
 
 	"github.com/spf13/cobra"
-	"github.com/ta-anomaly-detection/web-server/internal/config"
+	"github.com/ta-anomaly-detection/dashboard-monitoring-revision/web-server/internal/config"
 )
 
 var migrateCmd = &cobra.Command{
@@ -20,13 +20,12 @@ var migrateCmd = &cobra.Command{
 			fmt.Println("Please specify 'up' or 'down' for migration direction")
 			os.Exit(1)
 		}
-		
+
 		opt := args[0]
 		if opt != "up" && opt != "down" {
 			fmt.Println("Invalid argument. Use 'up' or 'down'")
 			os.Exit(1)
 		}
-
 
 		migrateCmd := exec.Command("migrate", "-database", dsn, "-path", migrationsPath, opt)
 		migrateCmd.Stdout = os.Stdout

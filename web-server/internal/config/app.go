@@ -4,11 +4,11 @@ import (
 	"github.com/go-playground/validator/v10"
 	"github.com/labstack/echo/v4"
 	"github.com/spf13/viper"
-	"github.com/ta-anomaly-detection/web-server/internal/delivery/http"
-	"github.com/ta-anomaly-detection/web-server/internal/delivery/http/middleware"
-	"github.com/ta-anomaly-detection/web-server/internal/delivery/http/route"
-	"github.com/ta-anomaly-detection/web-server/internal/repository"
-	"github.com/ta-anomaly-detection/web-server/internal/usecase"
+	"github.com/ta-anomaly-detection/dashboard-monitoring-revision/web-server/internal/delivery/http"
+	"github.com/ta-anomaly-detection/dashboard-monitoring-revision/web-server/internal/delivery/http/middleware"
+	"github.com/ta-anomaly-detection/dashboard-monitoring-revision/web-server/internal/delivery/http/route"
+	"github.com/ta-anomaly-detection/dashboard-monitoring-revision/web-server/internal/repository"
+	"github.com/ta-anomaly-detection/dashboard-monitoring-revision/web-server/internal/usecase"
 	"gorm.io/gorm"
 )
 
@@ -41,11 +41,11 @@ func Bootstrap(config *BootstrapConfig) {
 	zapLoggerMiddleware := middleware.ZapLogger(config.Log.Middleware)
 
 	routeConfig := route.RouteConfig{
-		App:               config.App,
-		UserController:    userController,
-		ContactController: contactController,
-		AddressController: addressController,
-		AuthMiddleware:    authMiddleware,
+		App:                 config.App,
+		UserController:      userController,
+		ContactController:   contactController,
+		AddressController:   addressController,
+		AuthMiddleware:      authMiddleware,
 		ZapLoggerMiddleware: zapLoggerMiddleware,
 	}
 	routeConfig.Setup()

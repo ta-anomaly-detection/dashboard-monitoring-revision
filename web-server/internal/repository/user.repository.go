@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"github.com/ta-anomaly-detection/web-server/internal/domain/entity"
+	"github.com/ta-anomaly-detection/dashboard-monitoring-revision/web-server/internal/domain/entity"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
 )

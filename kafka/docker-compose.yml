@@ -10,7 +10,7 @@ services:
     ports:
       - "2181:2181"
     networks:
-      - log-monitor-network
+      - log-string-network
 
   kafka:
     image: confluentinc/cp-kafka:7.6.0
@@ -39,8 +39,8 @@ services:
     volumes:
       - ./jmx_exporter:/jmx_exporter
     networks:
-      - log-monitor-network
+      - log-string-network
 
 networks:
-  log-monitor-network:
+  log-string-network:
     external: true

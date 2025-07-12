@@ -6,7 +6,7 @@ services:
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
     networks:
-      - log-monitor-network
+      - log-string-network
     ports:
       - "9090:9090"
 
@@ -16,7 +16,7 @@ services:
     command:
       - '--path.rootfs=/host'
     networks:
-      - log-monitor-network
+      - log-string-network
     ports:
       - "9100:9100"
     volumes:
@@ -35,8 +35,8 @@ services:
       - /var/lib/docker/:/var/lib/docker:ro
     restart: always
     networks:
-      - log-monitor-network
+      - log-string-network
 
 networks:
-  log-monitor-network:
+  log-string-network:
     external: true
