@@ -52,10 +52,10 @@ wait_for_port "localhost" "9092"
 
 echo "Creating Kafka topics..."
 docker exec kafka-server kafka-topics --create \
-  --topic web-server-logs \
+  --topic string-logs \
   --bootstrap-server localhost:9092 \
   --replication-factor 1 \
-  --partitions 10 || echo "Topic web-server-logs might already exist or an error occurred."
+  --partitions 10 || echo "Topic string-logs might already exist or an error occurred."
 
 echo "Kafka cluster is ready."
 

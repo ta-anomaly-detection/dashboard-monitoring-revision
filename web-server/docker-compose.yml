@@ -50,7 +50,7 @@ services:
       - app-data:/var/app/logs:ro
     environment:
       - KAFKA_BROKERS=kafka-server:9092
-      - KAFKA_TOPIC=web-server-logs
+      - KAFKA_TOPIC=string-logs
     depends_on:
       - web-server-app
     networks:
