@@ -52,7 +52,7 @@ class AddProcessingTime(MapFunction):
 
             return Row(
                 row['ip'] or "",
-                clean_ts(row['time']) or "",
+                row['time'] or "",
                 row['method'] or "",
                 float(row['responseTime']) if row['responseTime'] else 0.0,
                 row['url'] or "",

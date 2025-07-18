@@ -25,7 +25,7 @@ def parse_log(json_line: str):
         
         # Parse the log line using regex
         pattern = re.compile(
-            r'(?P<ip>\S+) - - \[(?P<datetime>[^\]]+)\] time:(?P<response_time>[\d.]+) s "(?P<method>[A-Z]+) (?P<url>\S+) (?P<protocol>[^"]+)" (?P<status>\d{3}) (?P<size>\d+) "[^"]*" "(?P<user_agent>[^"]+)"'
+            r'(?P<ip>\S+) - [^ ]+ \[(?P<datetime>[^\]]+)\] time:(?P<response_time>[\d.]+) s "(?P<method>[A-Z]+) (?P<url>\S+) (?P<protocol>[^"]+)" (?P<status>\d{3}) (?P<size>\d+) "[^"]*" "(?P<user_agent>[^"]+)"'
         )
         match = pattern.match(log_line)
         if match:

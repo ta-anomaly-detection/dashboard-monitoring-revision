@@ -642,7 +642,8 @@
                 "value": 85
               }
             ]
-          }
+          },
+          "unit": "s"
         },
         "overrides": []
       },
@@ -683,13 +684,87 @@
               "table": ""
             }
           },
-          "pluginVersion": "4.10.0",
+          "pluginVersion": "4.10.1",
           "queryType": "table",
-          "rawSql": "SELECT\n  avg(toUnixTimestamp(ingestion_time) - toUnixTimestamp(time)) AS avg_latency_seconds,\n  max(toUnixTimestamp(ingestion_time) - toUnixTimestamp(time)) AS max_latency_seconds,\n  min(toUnixTimestamp(ingestion_time) - toUnixTimestamp(time)) AS min_latency_seconds,\n  quantile(0.5)(toUnixTimestamp(ingestion_time) - toUnixTimestamp(time)) AS p50_latency_seconds,\n  quantile(0.95)(toUnixTimestamp(ingestion_time) - toUnixTimestamp(time)) AS p95_latency_seconds,\n  quantile(0.99)(toUnixTimestamp(ingestion_time) - toUnixTimestamp(time)) AS p99_latency_seconds\nFROM web_server_logs\nWHERE ingestion_time IS NOT NULL AND time IS NOT NULL",
+          "rawSql": "SELECT\n  avg(toUnixTimestamp(ingestion_time) - toUnixTimestamp(time)) AS avg_latency_seconds,\n  max(toUnixTimestamp(ingestion_time) - toUnixTimestamp(time)) AS max_latency_seconds,\n  min(toUnixTimestamp(ingestion_time) - toUnixTimestamp(time)) AS min_latency_seconds,\n  quantile(0.5)(toUnixTimestamp(ingestion_time) - toUnixTimestamp(time)) AS p50_latency_seconds,\n  quantile(0.95)(toUnixTimestamp(ingestion_time) - toUnixTimestamp(time)) AS p95_latency_seconds,\n  quantile(0.99)(toUnixTimestamp(ingestion_time) - toUnixTimestamp(time)) AS p99_latency_seconds\nFROM (\n  SELECT *\n  FROM web_server_logs\n  WHERE ingestion_time IS NOT NULL AND time IS NOT NULL\n  ORDER BY ingestion_time DESC\n  LIMIT 2000\n) AS latest_logs;",
           "refId": "A"
         }
       ],
       "title": "End-to-End Latency",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "feo9rg30km0hsb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "orange",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 85
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 35
+      },
+      "id": 15,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "editorType": "sql",
+          "format": 1,
+          "meta": {
+            "builderOptions": {
+              "columns": [],
+              "database": "",
+              "limit": 1000,
+              "mode": "list",
+              "queryType": "table",
+              "table": ""
+            }
+          },
+          "pluginVersion": "4.10.1",
+          "queryType": "table",
+          "rawSql": "SELECT\n  avg(processing_time_ms) AS avg_latency_seconds,\n  max(processing_time_ms) AS max_latency_seconds,\n  min(processing_time_ms) AS min_latency_seconds,\n  quantile(0.5)(processing_time_ms) AS p50_latency_seconds,\n  quantile(0.95)(processing_time_ms) AS p95_latency_seconds,\n  quantile(0.99)(processing_time_ms) AS p99_latency_seconds\nFROM (\n  SELECT *\n  FROM web_server_logs\n  WHERE ingestion_time IS NOT NULL AND time IS NOT NULL\n  ORDER BY ingestion_time DESC\n  LIMIT 2000\n) AS latest_logs;",
+          "refId": "A"
+        }
+      ],
+      "title": "Flink Processing Time",
       "type": "gauge"
     },
     {
@@ -698,7 +773,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 35
+        "y": 43
       },
       "id": 2,
       "panels": [],
@@ -769,7 +844,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 36
+        "y": 44
       },
       "id": 1,
       "options": {
@@ -871,7 +946,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 36
+        "y": 44
       },
       "id": 3,
       "options": {
@@ -973,7 +1048,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 44
+        "y": 52
       },
       "id": 12,
       "options": {
@@ -1025,12 +1100,12 @@
     "list": []
   },
   "time": {
-    "from": "now-15m",
-    "to": "now"
+    "from": "2025-07-18T07:45:30.000Z",
+    "to": "2025-07-18T07:47:30.000Z"
   },
   "timepicker": {},
   "timezone": "browser",
   "title": "Final Updated Benchmark",
   "uid": "0b069b39-3755-4e87-a024-31b9822cf92a",
-  "version": 3
+  "version": 4
 }
